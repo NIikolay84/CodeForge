@@ -1,6 +1,9 @@
-﻿namespace AbstractFactory.Interfaces
+﻿using AbstractFactory.Models;
+
+namespace AbstractFactory.Interfaces
 {
-    public interface ICarFactory : IBodyFactory, IEngineFactory
+    public interface ICarFactory
     {
+        Car CreateCar();
     }
 }
