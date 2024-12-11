@@ -14,5 +14,10 @@ namespace AbstractFactory.Models
             Model = model;
             Engine = engine;
         }
+
+        public override string ToString()
+        {
+            return $"Brand: {Brand}, Model: {Model}, Engine: {Engine.GetEngine()}";
+        }
     }
 }

@@ -1,10 +1,27 @@
 ﻿using AbstractFactory.Factories;
 
-var mercedes = new MercedesFactory().CreateCar();
-Console.WriteLine($"{mercedes.Brand}: {mercedes.Model}: {mercedes.Engine.GetEngine()}\n");
+var toyotaFactory = new ToyotaFactory();
+var toyotaParkFactory = new CarParkFactory(toyotaFactory);
+var toyotaPark = toyotaParkFactory.CreateCarPark("Toyota park", builder =>
+{
+    builder.AddSedans(2);
+    builder.AddCrossovers(6);
+});
 
-var toyota = new ToyotaFactory().CreateCar();
-Console.WriteLine($"{toyota.Brand}: {toyota.Model}: {toyota.Engine.GetEngine()}\n");
+Console.WriteLine(toyotaPark.ToString());
+
+var mercedesFactory = new MercedesFactory();
+var mercedesParkFactory = new CarParkFactory(mercedesFactory);
+var mercedesPark = mercedesParkFactory.CreateCarPark("Mercedes park", builder =>
+{
+    builder.AddSedans(1);
+    builder.AddCrossovers(2);
+    builder.AddHatchbacks(1);
+});
+
+Console.WriteLine(mercedesPark.ToString());
+
+
 
 
 

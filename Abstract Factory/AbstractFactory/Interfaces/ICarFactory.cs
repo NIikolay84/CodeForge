@@ -4,6 +4,8 @@ namespace AbstractFactory.Interfaces
 {
     public interface ICarFactory
     {
-        Car CreateCar();
+        Car CreateSedan();
+        Car CreateCrossover();
+        Car CreateHatchbak();
     }
 }
