@@ -5,13 +5,13 @@ namespace AbstractFactory.Factories
 {
     public class ToyotaFactory : ICarFactory
     {
-        public Car CreateCrossover()
+        public Crossover CreateCrossover()
             => new("Toyota Crossover", "RAV 4", new ToyotaEngine());
 
-        public Car CreateHatchbak()
+        public Hatchback CreateHatchbak()
             => new("Toyota Hatchbak", "Corola", new ToyotaEngine());
 
-        public Car CreateSedan()
+        public Sedan CreateSedan()
             => new("Toyota Sedan", "Camry", new ToyotaEngine());
     }
 }

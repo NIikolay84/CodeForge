@@ -5,13 +5,13 @@ namespace AbstractFactory.Factories
 {
     public class MercedesFactory : ICarFactory
     {
-        public Car CreateCrossover()
-            => new("Mercedes Crossover", "ML450", new MercedesEngine());
+        public Crossover CreateCrossover()
+            => new ("Mercedes Crossover", "ML450", new MercedesEngine());
 
-        public Car CreateHatchbak()
+        public Hatchback CreateHatchbak()
             => new("Mercedes Hatchbak", "A130", new MercedesEngine());
 
-        public Car CreateSedan()
+        public Sedan CreateSedan()
             => new("Merceds Sedan", "E500", new MercedesEngine());
     }
 }

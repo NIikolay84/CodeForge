@@ -1,26 +1,16 @@
 ﻿using AbstractFactory.Factories;
+using AbstractFactory.Models;
 
-var toyotaFactory = new ToyotaFactory();
-var toyotaParkFactory = new CarParkFactory(toyotaFactory);
-var toyotaPark = toyotaParkFactory.CreateCarPark("Toyota park", builder =>
-{
-    builder.AddSedans(2);
-    builder.AddCrossovers(6);
-});
+var newCar = new NewCar("Mercedes Crossover", "ML450", new MercedesEngine());
+var oldCar = new OldCar("Toyota Crossover", "RAV 4", new ToyotaEngine());
 
-Console.WriteLine(toyotaPark.ToString());
+var newWay = new NewHighway();
+newWay.PlaceCarToDrive(oldCar);
+newWay.PlaceCarToDrive(newCar);
 
-var mercedesFactory = new MercedesFactory();
-var mercedesParkFactory = new CarParkFactory(mercedesFactory);
-var mercedesPark = mercedesParkFactory.CreateCarPark("Mercedes park", builder =>
-{
-    builder.AddSedans(1);
-    builder.AddCrossovers(2);
-    builder.AddHatchbacks(1);
-    builder.AddCrossovers(6);
-});
-
-Console.WriteLine(mercedesPark.ToString());
+var oldway = new OldHighway();
+oldway.PlaceCarToDrive(oldCar);
+oldway.PlaceCarToDrive(newCar);
 
 
 
