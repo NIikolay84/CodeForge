@@ -17,6 +17,7 @@ var mercedesPark = mercedesParkFactory.CreateCarPark("Mercedes park", builder =>
     builder.AddSedans(1);
     builder.AddCrossovers(2);
     builder.AddHatchbacks(1);
+    builder.AddCrossovers(6);
 });
 
 Console.WriteLine(mercedesPark.ToString());

@@ -6,7 +6,7 @@ namespace AbstractFactory.Builders
     public class CarParkBuilder : ICarParkBuilder
     {
         private readonly ICarFactory _carFactory;
-        private List<Car> _cars = [];
+        private Dictionary<string, List<Car>> _cars = [];
 
         public CarParkBuilder(ICarFactory carFactory)
         {
@@ -15,34 +15,36 @@ namespace AbstractFactory.Builders
 
         public ICarParkBuilder AddCrossovers(int count)
         {
-            AddCars(count, _carFactory.CreateCrossover);
+            _cars["Crossovers"] = AddCars(count, _carFactory.CreateCrossover);
             return this;
         }
 
         public ICarParkBuilder AddHatchbacks(int count)
         {
-            AddCars(count, _carFactory.CreateHatchbak);
+            _cars["Hatchbacks"] = AddCars(count, _carFactory.CreateHatchbak);
             return this;
         }
 
         public ICarParkBuilder AddSedans(int count)
         {
-            AddCars(count, _carFactory.CreateSedan);
+            _cars["Sedans"] = AddCars(count, _carFactory.CreateSedan);
             return this;
         }
 
         public List<Car> Build()
         {
-            var result = _cars;
-            _cars = new List<Car>();
+            var result = _cars.Values.SelectMany(cars => cars).ToList();
+            _cars.Clear();
             return result;
         }
 
-        private void AddCars(int count, Func<Car> createCar)
+        private List<Car> AddCars(int count, Func<Car> createCar)
         {
+            var cars = new List<Car>();
             for (int i = 0; i < count; i++)
-                _cars.Add(createCar());
-        }
+                cars.Add(createCar());
 
+            return cars;
+        }
     }
 }
