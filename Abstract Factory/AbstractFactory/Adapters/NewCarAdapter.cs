@@ -3,11 +3,10 @@ using AbstractFactory.Models;
 
 namespace AbstractFactory.Adapters;
 
-public class NewCarAdapter : OldCar
+public class NewCarAdapter : ICarAdapter
 {
-    public NewCarAdapter(NewCar newCar) : base(newCar.Brand, newCar.Model, newCar.Engine)
+    public Car Adapt(Car car)
     {
+        return new OldCar(car.Brand, car.Model, car.Engine);
     }
-
-    public override CarGeneration CarGeneration => CarGeneration.Old;
 }

@@ -32,6 +32,7 @@ namespace AbstractFactory.Models
         Default = 0,
         New = 1,
         Old = 2,
+        Classic = 3,
     }
 
 }
